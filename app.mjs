@@ -4,11 +4,17 @@
 
 import express from 'express';
 //const express = require('express');
+// const sql = require('mssql/msnodesqlv8');
+
+
+
 
 //import { default as sql } from 'msnodesqlv8';
 //import sql from 'msnodesqlv8';
 //import sql from 'mssql';
 
+
+import  * as sql  from 'mssql';
 
 
 
