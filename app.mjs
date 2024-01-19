@@ -27,12 +27,10 @@ const app = express();
 
 
 var config2 = {
-    "server": "(localdb)\\localDBDemo",
-    "database": "notes",
-    "driver": "msnodesqlv8",
-    "options": {
-        "trustedConnection": true
-    }
+    "server": "COMPDEWO03",
+    "database": "ch7db",
+    
+    
 };
 
 
@@ -51,7 +49,21 @@ sql.connect(config2, function (err) {
 });
 
 
-
+function getEmployees() {
+    var dbConn = new sql.Connection(dbConfig);
+    dbConn.connect().then(function () {
+        var request = new sql.Request(dbConn);
+        request.query("select * from notes").then(function (resp) {
+            console.log(resp);
+            dbConn.close();
+        }).catch(function (err) {
+            console.log(err);
+            dbConn.close();
+        });
+    }).catch(function (err) {
+        console.log(err);
+    });
+}
 
 
 app.get('/', (req, res) => {
